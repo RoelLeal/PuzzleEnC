@@ -22,12 +22,39 @@ void imprimirArreglo() {
 		printf("\n");
 	}
 }
+void moverArriba() {
+	if(posI - 1 >= 0) {
+		temp = puzzle[posI-1][posJ];
+		puzzle[posI-1][posJ] = puzzle[posI][posJ];
+		puzzle[posI][posJ] = temp;
+		posI -= 1;
+		temp = 0;
+	}
+}
+void moverAbajo() {
+	if(posI + 1 < 4) {
+		temp = puzzle[posI+1][posJ];
+		puzzle[posI+1][posJ] = puzzle[posI][posJ];
+		puzzle[posI][posJ] = temp;
+		posI += 1;
+		temp = 0;
+	}
+}
 void moverIzquierda() {
 	if(posJ - 1 >= 0) {
 		temp = puzzle[posI][posJ-1];
 		puzzle[posI][posJ-1] = puzzle[posI][posJ];
 		puzzle[posI][posJ] = temp;
-		posJ -= 1;
+		posJ = posJ - 1;
+		temp = 0;
+	}
+}
+void moverDerecha() {
+	if(posJ + 1 < 4) {
+		temp = puzzle[posI][posJ+1];
+		puzzle[posI][posJ+1] = puzzle[posI][posJ];
+		puzzle[posI][posJ] = temp;
+		posJ += 1;
 		temp = 0;
 	}
 }
@@ -39,14 +66,15 @@ int main() {
 		flecha = getch();
 		switch(flecha) {
 			case flecha_arr:
-				printf("ARRIBA");
+				moverArriba();
 				imprimirArreglo();
 				break;
 			case flecha_aba:
-				printf("ABAJO");
+				moverAbajo();
 				imprimirArreglo();
 				break;
 			case flecha_der:
+				moverDerecha();
 				imprimirArreglo();
 				break;
 			case flecha_izq:
