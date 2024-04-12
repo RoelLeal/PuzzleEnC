@@ -82,7 +82,7 @@ int main() {
 			moverArriba();
 			imprimirArreglo();
 		}else {
-			printf("El numero %i no se puede ser seleccionado, elija otro numero\n\n", n);
+			printf("El numero %i no se puede ser seleccionado, elija otro numero\n\n",n);
 		}
 	}
 }
